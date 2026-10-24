@@ -42,7 +42,7 @@ v350 already had a `Q_reg`, but it updated Q only **when F changed value**, usin
 - These do **not** count as F writes, as on a Zilog Z80:
   - `POP AF` and `EX AF,AF'`, which load F rather than compute flags.
   - `SET` and `RES`, which T80 sends through the ALU (`ALU_Op` `1010`/`1011`) and which rewrite F unchanged.
-- A `DD`/`FD` prefix behaves as an instruction that does not write F, so Q = 0 before the `SCF`/`CCF` that follows it.
+- A `DD`/`FD` prefix behaves as an instruction that does not write F, so Q = 0 before the `SCF`/`CCF` that follows it ([found by TonyB](https://stardot.org.uk/forums/viewtopic.php?p=481595#p481595)).
 - **New generic `R800_MULU : boolean := false`.** The R800 `MULUB`/`MULUW` multiplier (MSX turbo R, added in 0250) is not a Zilog Z80 opcode. It is now off by default, which also takes it out of the critical path. Set it to `true` for MSX turbo R cores.
 
 Only `T80.vhd` changes. `T80_ALU.vhd`, `T80_MCode.vhd`, `T80_Reg.vhd`, `T80_Pack.vhd` and `T80se.vhd` are the unmodified v350 files.
@@ -83,6 +83,7 @@ set_multicycle_path -from [get_regs {<path>/u0/*}] -to [get_regs {<path>/u0/*}] 
 - **Sorgelig**: T80(c) v350 (MiSTer).
 - **Patrik Rak (Raxoft)**: z80test.
 - **David Banks (hoglet)**: documentation of the SCF/CCF behaviour.
+- **TonyB**: found that a DD/FD prefix before SCF/CCF acts as an instruction that does not modify the flags.
 - **Rui Ribeiro**: pointed out the SCF/CCF (Q register) issue and its discovery, which led to this fix.
 
 The licence is unchanged: T80's original BSD-style licence, kept in the header of `T80.vhd`.
