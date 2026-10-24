@@ -83,5 +83,6 @@ set_multicycle_path -from [get_regs {<path>/u0/*}] -to [get_regs {<path>/u0/*}] 
 - **Sorgelig**: T80(c) v350 (MiSTer).
 - **Patrik Rak (Raxoft)**: z80test.
 - **David Banks (hoglet)**: documentation of the SCF/CCF behaviour.
+- **Rui Ribeiro**: pointed out the SCF/CCF (Q register) issue and its discovery, which led to this fix.
 
 The licence is unchanged: T80's original BSD-style licence, kept in the header of `T80.vhd`.
