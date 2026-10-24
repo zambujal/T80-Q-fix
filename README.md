@@ -1,6 +1,6 @@
 # T80: Zilog SCF/CCF (Q register) fix
 
-This is a small fix to **T80 version 350 (Sorgelig, 2018)**, the T80 used by many MiSTer cores. After the fix, the core passes **all 160 tests of both `z80full` and `z80ccf`** from Patrik Rak's [z80test 1.2a](https://github.com/raxoft/z80test), on real FPGA hardware.
+This is a small fix to **T80 version 350 (Sorgelig, 2018)**, the T80 used by many MiSTer cores. After the fix, the core passes **all 160 tests of `z80full`, `z80ccf` and `z80memptr`** from Patrik Rak's [z80test 1.2a](https://github.com/raxoft/z80test), on real FPGA hardware.
 
 The header of T80 v350 says:
 
@@ -53,7 +53,7 @@ Only `T80.vhd` changes. `T80_ALU.vhd`, `T80_MCode.vhd`, `T80_Reg.vhd`, `T80_Pack
 |---|---|---|
 | z80full | pass | **160/160** |
 | z80ccf | pass | **160/160** |
-| z80memptr | pass (subsets) | not run yet |
+| z80memptr | pass (subsets) | **160/160** |
 
 - **Simulation:** GHDL `--synth` → Verilog → Verilator, with `T80se`, `T2Write=1`, a random `CLKEN` and random `WAIT_n`.
 - **Hardware:** Gowin GW2AR-18 (Tang Nano 20K), `T80se` at 54 MHz with CLKEN, so the CPU runs at 3.5 and 14 MHz.

@@ -6,7 +6,7 @@
 -- Copyright (c) 2018 Sorgelig
 --  2026: Zilog Q register for SCF/CCF (X/Y flags) fixed, SET/RES excluded from Q,
 --        R800 multiplier behind the R800_MULU generic (off by default).
---        Passes z80test 1.2a z80full and z80ccf on FPGA hardware (Antonio, Zambujal).
+--        Passes z80test 1.2a z80full, z80ccf and z80memptr on FPGA hardware (Antonio, Zambujal).
 --  Test passed: ZEXDOC, ZEXALL, Z80Full(*), Z80memptr
 --  (*) Currently only SCF and CCF instructions aren't passed X/Y flags check as
 --      correct implementation is still unclear.
